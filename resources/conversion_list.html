@@ -11,14 +11,18 @@
   <tr>
     <th>Euro amount</th>
     <th>Conversion rate (1 BTC)</th>
+    <th>BTC amount</th>
     <th>Request IP</th>
+    <th>Conversion time</th>
   </tr>
 
   {% for obj in object_list %}
   <tr>
     <td>{{ obj.eur_amount }} EUR</td>
-    <td>{{ obj.conversion_rate}} EUR</td>
-    <td>{{ obj.request_ip}}</td>
+    <td>{{ obj.conversion_rate }} EUR</td>
+    <td>{{ obj.btc_amount }} BTC</td>
+    <td>{{ obj.request_ip }}</td>
+    <td>{{ obj.created|date:"d.m.Y. h:i:s" }}</td>
   </tr>
   {% endfor %}
 

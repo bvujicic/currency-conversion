@@ -1,11 +1,13 @@
 """
-Business logic services.
+Business logic functions.
 """
+from decimal import Decimal, ROUND_DOWN
 import requests
-from decimal import Decimal
 
 
 CONVERSION_ENDPOINT_URL = 'https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=EUR'
+
+# set Decimal precision
 
 
 def make_eur_to_btc_conversion(*, eur_value):
@@ -23,7 +25,9 @@ def make_eur_to_btc_conversion(*, eur_value):
     if btc_price is None:
         return
 
-    btc_price = Decimal(btc_price)
-    btc_value = eur_value / btc_price
+    btc_price = Decimal(btc_price).quantize(Decimal('.0001'), rounding=ROUND_DOWN)
+    eur_value = Decimal(eur_value)
 
-    return btc_value, btc_price
+    btc_value = (eur_value / btc_price).quantize(Decimal('.0001'), rounding=ROUND_DOWN)
+
+    return (btc_value, btc_price)
