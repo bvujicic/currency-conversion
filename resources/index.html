@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversion</title>
+</head>
+
+
+<body>
+
+<form action="{% url 'user_entry' %}" method="POST">
+
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <input type="submit">
+
+</form>
+<br>
+<a href="{% url 'log_entry_list' %}">List of all conversion</a>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List</title>
+</head>
+<body>
+
+
+<table>
+  <tr>
+    <th>Euro amount</th>
+    <th>Conversion rate (1 BTC)</th>
+    <th>Request IP</th>
+  </tr>
+
+  {% for obj in object_list %}
+  <tr>
+    <td>{{ obj.eur_amount }} EUR</td>
+    <td>{{ obj.conversion_rate}} EUR</td>
+    <td>{{ obj.request_ip}}</td>
+  </tr>
+  {% endfor %}
+
+</table>
+
+<br>
+<a href="{% url 'user_entry' %}">Home</a>
+</body>
+</html>
